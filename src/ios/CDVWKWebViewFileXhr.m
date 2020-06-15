@@ -108,6 +108,7 @@ NS_ASSUME_NONNULL_BEGIN
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
         [sessionConfiguration setRequestCachePolicy:NSURLRequestReloadIgnoringCacheData];
         self.urlSession = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:self delegateQueue:nil]; // FortityFalsePositive
+        [wkWebView.configuration.userContentController removeScriptMessageHandlerForName:@"nativeXHR"];
         [wkWebView.configuration.userContentController addScriptMessageHandler:self name:@"nativeXHR"];
 
     }
