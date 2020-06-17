@@ -603,7 +603,7 @@
       var timeoutInSecs = (isNaN(reqContext.timeout) ? undefined : (reqContext.timeout / 1000));
 
       var reqPayLoad = {id: id, callback: "nativeXHRResponse",
-        url: HttpHandler._resolveUri(reqContext.url), method: reqContext.method,
+        url: encodeURI(HttpHandler._resolveUri(reqContext.url).replace("\u0000", "")), method: reqContext.method,
         headers: reqContext.requestHeaders,
         body: bodyAsBase64String, timeout: timeoutInSecs};
       
